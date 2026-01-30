@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Assign CLI arguments
+# Collect host usage info and insert into host_usage table
+
 psql_host=$1
 psql_port=$2
 db_name=$3
@@ -31,4 +33,5 @@ VALUES('$timestamp', $host_id, $memory_free, $cpu_idle, $cpu_kernel, $disk_io, $
 export PGPASSWORD=$psql_password
 psql -h "$psql_host" -p "$psql_port" -d "$db_name" -U "$psql_user" -c "$insert_stmt"
 exit $?
+
 
