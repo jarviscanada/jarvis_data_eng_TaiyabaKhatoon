@@ -199,3 +199,70 @@ FROM
   cd.members mems
 ORDER BY
   member;
+
+
+--- Aggregation
+
+-- Question 1: Count the number of recommendations each member makes 
+
+SELECT
+  recommendedby,
+  COUNT(*) AS count
+FROM
+  cd.members
+WHERE
+  recommendedby IS NOT NULL
+GROUP BY
+  recommendedby
+ORDER BY
+  recommendedby;
+
+-- Question 2: List the total slots booked per facility
+
+SELECT
+  facid,
+  SUM(slots) AS "Total Slots"
+FROM
+  cd.bookings
+GROUP BY
+  facid
+ORDER BY
+  facid;
+
+-- Question 3: List the total slots booked per facility in September 2012
+
+SELECT
+  facid,
+  SUM(slots) AS "Total Slots"
+FROM
+  cd.bookings
+WHERE
+  starttime >= '2012-09-01'
+  AND starttime < '2012-10-01'
+GROUP BY
+  facid
+ORDER BY
+  "Total Slots";
+
+-- Question 4: List the total slots booked per facility per month in 2012
+
+SELECT
+  facid,
+  EXTRACT(
+    month
+    FROM
+      starttime
+  ) AS month,
+  SUM(slots) AS "Total Slots"
+FROM
+  cd.bookings
+WHERE
+  starttime >= '2012-01-01'
+  AND starttime < '2013-01-01'
+GROUP BY
+  facid,
+  month
+ORDER BY
+  facid,
+  month;
+

@@ -230,3 +230,61 @@ ORDER BY member;
 Explanation:
 This query uses a correlated subquery to list each member with their recommender without using joins.
 
+
+##### Aggregation  ######
+
+### Count the number of recommendations each member makes
+
+```sql
+SELECT recommendedby, COUNT(*) AS count
+FROM cd.members
+WHERE recommendedby IS NOT NULL
+GROUP BY recommendedby
+ORDER BY recommendedby;
+```
+
+Explanation:
+This query groups members by recommender ID and counts how many recommendations each one has made.
+
+### List the total slots booked per facility
+
+```sql
+SELECT facid, SUM(slots) AS "Total Slots"
+FROM cd.bookings
+GROUP BY facid
+ORDER BY facid;
+```
+
+Explanation:
+This query groups bookings by facility and sums the slots booked for each one.
+
+### List the total slots booked per facility in a given month
+
+```sql
+SELECT facid, SUM(slots) AS "Total Slots"
+FROM cd.bookings
+WHERE starttime >= '2012-09-01'
+  AND starttime < '2012-10-01'
+GROUP BY facid
+ORDER BY "Total Slots";
+```
+
+Explanation:
+This query filters bookings to September 2012 and sums slots per facility, ordered by total usage.
+
+### List the total slots booked per facility per month
+
+```sql
+SELECT
+  facid,
+  EXTRACT(month FROM starttime) AS month,
+  SUM(slots) AS "Total Slots"
+FROM cd.bookings
+WHERE starttime >= '2012-01-01'
+  AND starttime < '2013-01-01'
+GROUP BY facid, month
+ORDER BY facid, month;
+```
+
+Explanation:
+This query groups bookings by facility and month in 2012 and sums the slots booked for each group.
