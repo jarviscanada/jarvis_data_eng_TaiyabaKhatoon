@@ -1,5 +1,5 @@
 
--- Modifying Data 
+--- Modifying Data 
 
 --Question 1: Insert Spa facility
 
@@ -59,3 +59,71 @@ DELETE FROM
   cd.members
 WHERE
   memid = 37;
+
+
+--- Basics
+
+-- Question 1: Control which rows are retrieved - part 2
+
+SELECT
+  facid,
+  name,
+  membercost,
+  monthlymaintenance
+FROM
+  cd.facilities
+WHERE
+  membercost > 0
+  AND membercost < monthlymaintenance / 50.0;
+
+-- Question 2: Basic string searches
+
+SELECT
+  facid,
+  name,
+  membercost,
+  guestcost,
+  initialoutlay,
+  monthlymaintenance
+FROM
+  cd.facilities
+WHERE
+  name LIKE '%Tennis%';
+
+-- Question 3: Matching against multiple possible values
+
+SELECT
+  facid,
+  name,
+  membercost,
+  guestcost,
+  initialoutlay,
+  monthlymaintenance
+FROM
+  cd.facilities
+WHERE
+  facid IN (1, 5);
+
+-- Question 4: Working with dates
+
+SELECT
+  memid,
+  surname,
+  firstname,
+  joindate
+FROM
+  cd.members
+WHERE
+  joindate >= '2012-09-01';
+
+-- Question 5: Combining results from multiple queries
+
+SELECT
+  surname
+FROM
+  cd.members
+UNION
+SELECT
+  name
+FROM
+  cd.facilities;
