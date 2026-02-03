@@ -127,3 +127,75 @@ SELECT
   name
 FROM
   cd.facilities;
+
+
+--- Join
+
+-- Question 1:  Retrieve the start times of members' bookings
+
+SELECT
+  b.starttime
+FROM
+  cd.bookings b
+  JOIN cd.members m ON b.memid = m.memid
+WHERE
+  m.firstname = 'David'
+  AND m.surname = 'Farrell';
+
+-- Question 2: Work out the start times of bookings for tennis courts
+
+SELECT
+  b.starttime AS start,
+  f.name
+FROM
+  cd.bookings b
+  JOIN cd.facilities f ON b.facid = f.facid
+WHERE
+  f.name LIKE 'Tennis Court%'
+  AND b.starttime >= '2012-09-21'
+  AND b.starttime < '2012-09-22'
+ORDER BY
+  b.starttime;
+
+-- Question 3: Produce a list of all members, along with their recommender
+
+SELECT
+  m.firstname AS memfname,
+  m.surname AS memsname,
+  r.firstname AS recfname,
+  r.surname AS recsname
+FROM
+  cd.members m
+  LEFT JOIN cd.members r ON m.recommendedby = r.memid
+ORDER BY
+  m.surname,
+  m.firstname;
+
+-- Question 4: Produce a list of all members who have recommended another member
+
+SELECT
+  DISTINCT r.firstname,
+  r.surname
+FROM
+  cd.members m
+  JOIN cd.members r ON m.recommendedby = r.memid
+ORDER BY
+  r.surname,
+  r.firstname;
+
+-- Question 5: Produce a list of all members, along with their recommender, using no joins
+
+SELECT
+  DISTINCT mems.firstname || ' ' || mems.surname AS member,
+  (
+    SELECT
+      recs.firstname || ' ' || recs.surname
+    FROM
+      cd.members recs
+    WHERE
+      recs.memid = mems.recommendedby
+  ) AS recommender
+FROM
+  cd.members mems
+ORDER BY
+  member;
