@@ -288,3 +288,80 @@ ORDER BY facid, month;
 
 Explanation:
 This query groups bookings by facility and month in 2012 and sums the slots booked for each group.
+
+### Find the count of members who have made at least one booking
+
+```sql
+SELECT COUNT(DISTINCT memid) AS count
+FROM cd.bookings;
+```
+
+Explanation:
+This query counts the distinct member IDs that appear in the bookings table, including guests.
+
+### List each member's first booking after September 1st 2012
+
+```sql
+SELECT
+  m.surname,
+  m.firstname,
+  b.memid,
+  MIN(b.starttime) AS starttime
+FROM cd.bookings b
+JOIN cd.members m
+  ON m.memid = b.memid
+WHERE b.starttime >= '2012-09-01'
+GROUP BY m.surname, m.firstname, b.memid
+ORDER BY b.memid;
+```
+
+Explanation:
+This query filters bookings after September 1st 2012 and finds the earliest booking for each member.
+
+### Produce a list of member names, with each row containing the total member count
+
+```sql
+SELECT
+  COUNT(*) OVER () AS count,
+  firstname,
+  surname
+FROM cd.members
+ORDER BY joindate;
+```
+
+Explanation:
+This query uses a window function to show the total number of members on every result row.
+
+### Produce a numbered list of members
+
+```sql
+SELECT
+  ROW_NUMBER() OVER (ORDER BY joindate) AS row_number,
+  firstname,
+  surname
+FROM cd.members
+ORDER BY joindate;
+```
+
+Explanation:
+This query uses the ROW_NUMBER window function to generate a sequential list of members ordered by their join date.
+
+### Facility with the highest number of slots booked
+
+```sql
+SELECT facid, SUM(slots) AS total
+FROM cd.bookings
+GROUP BY facid
+HAVING SUM(slots) = (
+  SELECT MAX(total_slots)
+  FROM (
+    SELECT SUM(slots) AS total_slots
+    FROM cd.bookings
+    GROUP BY facid
+  ) sub
+);
+```
+
+Explanation:
+This query calculates total slots per facility and returns the facility (or facilities) with the maximum total, ensuring ties are included.
+

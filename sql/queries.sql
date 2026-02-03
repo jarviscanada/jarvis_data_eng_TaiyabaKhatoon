@@ -266,3 +266,78 @@ ORDER BY
   facid,
   month;
 
+-- Question 5: Find the count of members who have made at least one booking
+
+SELECT
+  COUNT(DISTINCT memid) AS count
+FROM
+  cd.bookings;
+
+-- Question 6: List each member's first booking after September 1st 2012
+
+SELECT
+  m.surname,
+  m.firstname,
+  b.memid,
+  MIN(b.starttime) AS starttime
+FROM
+  cd.bookings b
+  JOIN cd.members m ON m.memid = b.memid
+WHERE
+  b.starttime >= '2012-09-01'
+GROUP BY
+  m.surname,
+  m.firstname,
+  b.memid
+ORDER BY
+  b.memid;
+
+-- Question 7: Produce a list of member names with the total member count on each row
+
+SELECT
+  COUNT(*) OVER () AS count,
+  firstname,
+  surname
+FROM
+  cd.members
+ORDER BY
+  joindate;
+
+-- Question 8: Produce a numbered list of members ordered by join date
+
+SELECT
+  ROW_NUMBER() OVER (
+    ORDER BY
+      joindate
+  ) AS row_number,
+  firstname,
+  surname
+FROM
+  cd.members
+ORDER BY
+  joindate;
+
+-- Question 9: Output the facility with the highest total number of slots booked (including ties)
+
+SELECT
+  facid,
+  SUM(slots) AS total
+FROM
+  cd.bookings
+GROUP BY
+  facid
+HAVING
+  SUM(slots) = (
+    SELECT
+      MAX(total_slots)
+    FROM
+      (
+        SELECT
+          SUM(slots) AS total_slots
+        FROM
+          cd.bookings
+        GROUP BY
+          facid
+      ) sub
+  );
+
