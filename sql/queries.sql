@@ -341,3 +341,39 @@ HAVING
       ) sub
   );
 
+
+--- String
+
+-- Question 1: Format member names as 'Surname, Firstname' 
+
+SELECT
+  surname || ', ' || firstname AS name
+FROM
+  cd.members
+ORDER BY
+  surname,
+  firstname;
+
+-- Question 2: Find telephone numbers with parentheses
+
+SELECT
+  memid,
+  telephone
+FROM
+  cd.members
+WHERE
+  telephone LIKE '%(%'
+ORDER BY
+  memid;
+
+-- Question 3: Count members by first letter of surname
+
+SELECT
+  SUBSTR(surname, 1, 1) AS letter,
+  COUNT(*) AS count
+FROM
+  cd.members
+GROUP BY
+  SUBSTR(surname, 1, 1)
+ORDER BY
+  letter;

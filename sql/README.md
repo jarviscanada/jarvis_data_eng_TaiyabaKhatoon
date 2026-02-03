@@ -365,3 +365,43 @@ HAVING SUM(slots) = (
 Explanation:
 This query calculates total slots per facility and returns the facility (or facilities) with the maximum total, ensuring ties are included.
 
+
+###### String ######
+
+### Format the names of members
+
+```sql
+SELECT
+  surname || ', ' || firstname AS name
+FROM cd.members
+ORDER BY surname, firstname;
+```
+
+Explanation:
+This query concatenates each members surname and firstname into the format Surname, Firstname and orders the results alphabetically.
+
+### Find telephone numbers with parentheses
+
+```sql
+SELECT
+  memid,
+  telephone
+FROM cd.members
+WHERE telephone LIKE '%(%'
+ORDER BY memid;
+```
+Explanation:
+This query identifies members whose telephone numbers contain parentheses by using a pattern match and orders the results by member ID.
+
+### Count the number of members whose surname starts with each letter
+
+```sql
+SELECT
+  SUBSTR(surname, 1, 1) AS letter,
+  COUNT(*) AS count
+FROM cd.members
+GROUP BY SUBSTR(surname, 1, 1)
+ORDER BY letter;
+```
+Explanation:
+This query groups members by the first letter of their surname and counts how many members fall under each starting letter.
