@@ -45,7 +45,7 @@
     },
     {
       "description": "Supported the design and implementation of a relational database system to meet analytical and reporting requirements. Analyzed data needs, designed normalized schemas, validated table relationships using primary and foreign keys, and tested system behavior through complex SQL queries. Deployed the database using Docker and ensured data integrity, performance, and alignment with business use cases.",
-      "git_url": "/linux_sql",
+      "git_url": "./sql",
       "name": "RDBMS and SQL Implementation"
     },
     {
@@ -55,12 +55,12 @@
     },
     {
       "description": "Conducted business analysis to define requirements for a Linux-based monitoring solution that automates the collection of hardware and resource usage metrics across cluster nodes. Identified the business problem, defined project scope and stakeholder needs, and documented functional and non-functional requirements. Produced a Business Requirements Document outlining monitoring objectives, implementation approach, and MVP delivery for centralized system performance monitoring.",
-      "git_url": "./bsa",
+      "git_url": "./bsa/BRD.pdf",
       "name": "Business Requirements Document for Linux Cluster Monitoring Agent"
     },
     {
       "description": "Conducted stakeholder elicitation to gather business and system requirements for a retail stock trading platform designed for independent investors. Analyzed business objectives and translated them into structured system requirements, including user stories, use case interactions, trading workflows, and data model design. Developed a comprehensive Software Requirements Document defining functional and non-functional requirements, system architecture, infrastructure considerations, and project timeline for a scalable platform supporting stock search, portfolio monitoring, and buy/sell trading operations.",
-      "git_url": "./bsa",
+      "git_url": "./bsa/SRD.pdf",
       "name": "Software Requirements Document for Retail Stock Trading Application"
     }
   ],
