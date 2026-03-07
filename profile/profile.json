@@ -47,6 +47,21 @@
       "description": "Supported the design and implementation of a relational database system to meet analytical and reporting requirements. Analyzed data needs, designed normalized schemas, validated table relationships using primary and foreign keys, and tested system behavior through complex SQL queries. Deployed the database using Docker and ensured data integrity, performance, and alignment with business use cases.",
       "git_url": "/linux_sql",
       "name": "RDBMS and SQL Implementation"
+    },
+    {
+      "description": "Analyzed retail transaction data using Python (Pandas, NumPy, Matplotlib) to identify sales trends and customer purchasing behavior. Cleaned and transformed raw data, performed exploratory analysis, and applied RFM segmentation to identify high-value customer groups and seasonal sales patterns to support data-driven business decisions.",
+      "git_url": "./python_data_analytics",
+      "name": "Python Data Analytics  London Gift Shop"
+    },
+    {
+      "description": "Conducted business analysis to define requirements for a Linux-based monitoring solution that automates the collection of hardware and resource usage metrics across cluster nodes. Identified the business problem, defined project scope and stakeholder needs, and documented functional and non-functional requirements. Produced a Business Requirements Document outlining monitoring objectives, implementation approach, and MVP delivery for centralized system performance monitoring.",
+      "git_url": "./bsa",
+      "name": "Business Requirements Document for Linux Cluster Monitoring Agent"
+    },
+    {
+      "description": "Conducted stakeholder elicitation to gather business and system requirements for a retail stock trading platform designed for independent investors. Analyzed business objectives and translated them into structured system requirements, including user stories, use case interactions, trading workflows, and data model design. Developed a comprehensive Software Requirements Document defining functional and non-functional requirements, system architecture, infrastructure considerations, and project timeline for a scalable platform supporting stock search, portfolio monitoring, and buy/sell trading operations.",
+      "git_url": "./bsa",
+      "name": "Software Requirements Document for Retail Stock Trading Application"
     }
   ],
   "name": "Taiyaba Khatoon",
@@ -86,20 +101,24 @@
       "Excel",
       "Docker",
       "Data Validation",
-      "Requirements Documentation"
+      "Requirements Documentation",
+      "Data Analysis",
+      "Pandas"
     ],
     "familiar": [
       "Stakeholder Communication",
       "Process Mapping",
       "System Monitoring",
       "Data Modeling",
-      "Reporting Automation"
+      "Reporting Automation",
+      "Requirements Elicitation"
     ],
     "proficient": [
       "Business Systems Analysis",
       "SQL",
       "PostgreSQL",
       "Linux/Bash",
+      "Python",
       "Agile/Scrum",
       "Git"
     ]
