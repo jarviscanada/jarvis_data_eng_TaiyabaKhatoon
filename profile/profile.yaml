@@ -51,10 +51,10 @@ jarvis_projects:
     git_url: "/python_data_analytics"
     description: Analyzed retail transaction data using Python (Pandas, NumPy, Matplotlib) to identify sales trends and customer purchasing behavior. Cleaned and transformed raw data, performed exploratory analysis, and applied RFM segmentation to identify high-value customer groups and seasonal sales patterns to support data-driven business decisions.
   - name: "Business Requirements Document for Linux Cluster Monitoring Agent"
-    git_url: "/bsa/BRD.pdf"
+    git_url: "/bsa"
     description: Conducted business analysis to define requirements for a Linux-based monitoring solution that automates the collection of hardware and resource usage metrics across cluster nodes. Identified the business problem, defined project scope and stakeholder needs, and documented functional and non-functional requirements. Produced a Business Requirements Document outlining monitoring objectives, implementation approach, and MVP delivery for centralized system performance monitoring.
   - name: "Software Requirements Document for Retail Stock Trading Application"
-    git_url: "/bsa/SRD.pdf"
+    git_url: "/bsa"
     description: Conducted stakeholder elicitation to gather business and system requirements for a retail stock trading platform designed for independent investors. Analyzed business objectives and translated them into structured system requirements, including user stories, use case interactions, trading workflows, and data model design. Developed a comprehensive Software Requirements Document defining functional and non-functional requirements, system architecture, infrastructure considerations, and project timeline for a scalable platform supporting stock search, portfolio monitoring, and buy/sell trading operations.   
 # List of personal or academic projects
 # Feel free to add more projects
